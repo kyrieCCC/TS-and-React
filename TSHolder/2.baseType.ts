@@ -37,3 +37,8 @@ function noReturn(): void {
     console.log("hello world!")
 }
 
+//9. null and undefined
+let x: number | null | undefined
+x = 1
+x = null
+x = undefined

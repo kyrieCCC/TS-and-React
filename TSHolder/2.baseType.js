@@ -33,3 +33,8 @@ console.log(c); //输出2
 function noReturn() {
     console.log("hello world!");
 }
+//9. null and undefined
+var x;
+x = 1;
+x = null;
+x = undefined;
