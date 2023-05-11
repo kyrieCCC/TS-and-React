@@ -68,6 +68,11 @@ function noReturn(): void {
 }
 ```
 
+### 9. null and undefined
+null和undefined类型在js当中经常被使用，在ts当中的使用方法也与在js当中使用类似
+
+null表示这是一个空对象，undefined表示这个值没有被定义，或者说是没有被赋值
+
     
 
 ## 1. 类型推断和定义类型
