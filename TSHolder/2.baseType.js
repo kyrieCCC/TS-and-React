@@ -14,3 +14,22 @@ var boo1 = true;
 //纯数字的数组类型
 var arr1 = [1, 2, 3, 4];
 var arr2 = [1, 2, 3, 4, 5];
+//6. tuple
+var tuple1;
+tuple1 = ["wlc", 18, true]; // 运行正常
+// tuple1 = ["wlc", "zcr", "1"] // 报错
+//7. enum
+//枚举类型
+var Color;
+(function (Color) {
+    Color[Color["Red"] = 0] = "Red";
+    Color[Color["Green"] = 1] = "Green";
+    Color[Color["Blue"] = 2] = "Blue";
+})(Color || (Color = {}));
+;
+var c = Color.Blue;
+console.log(c); //输出2
+//8. void
+function noReturn() {
+    console.log("hello world!");
+}

@@ -34,6 +34,40 @@ let arr : number[] = [1, 2, 3]
 let arr2 : Array<number> = [1, 2, 3, 4]
 ```
 
+### 6. tuple 元组类型
+元组类型用来表示**已知元素数量和类型的数组**，各元素的类型**不必相同**，对应位置的类型**需要相同**。
+
+简单来说就是一个确定位置和类型的数组，使用如下
+```ts
+let tuple1 : [string, number]
+
+tuple1 = ["wlc", 18] //正常使用
+tuple2 = [123, 18] // 报错，因为此时的两个位置上的值都是number类型
+console.log(tuple1[0]) // 输出"wlc"
+```
+
+### 7. enum 枚举类型
+枚举类型用于定义**数值集合**。
+```ts
+//定义一个Color的枚举类型
+enum Color {Red, Green, Blue};
+
+let c: Color = Color.Blue;
+console.log(c);  //输出2
+```
+
+### 8. void 返回值类型
+用于标识方法**返回值的类型**，表示该方法**没有返回值**。
+
+当我们的函数当中没有返回值，如没有return，或者是return的是一个空值或者undefined的时候就需要用到返回值为void
+
+```ts
+//没有返回值，使用 void进行返回值的标识
+function noReturn(): void {
+    console.log("there is no any return value")
+}
+```
+
     
 
 ## 1. 类型推断和定义类型
