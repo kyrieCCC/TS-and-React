@@ -96,6 +96,24 @@ interface IPerson {
 
 在接口的定义的时候存在非常多的操作，例如**只读属性**、**可选属性**和**任意属性**等等
 
+## typescript的函数类型
+在js当中函数经常被使用，相比于我们js当中对函数的编写，ts中的函数就是在js函数的基础上添加了一些内容
+
+我们可以支持在ts当中的为函数**添加参数以及返回值的类型**，例如
+```ts
+//这是在js当中的写法
+function add(x, y) {
+    return x + y
+}
+
+//这是在ts当中的写法
+function add(x: number, y: number): number {
+    return x + y
+}
+
+//我们可以看到我们为参数添加了number的限制，以及定义了返回值必须是一个number类型的数值
+```
+
     
 
 ## 1. 类型推断和定义类型
