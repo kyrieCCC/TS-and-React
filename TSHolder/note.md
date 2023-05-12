@@ -222,3 +222,18 @@ class Stack<T> {
 //使用
 const stack = new Stack<number>()
 ```
+
+### 泛型约束和参数默认
+```ts
+/* 泛型约束：限制泛型必须符合指定的类型（此处为字符串） */
+type IGetStringArr = <T extends string>(target: T) => T[]
+const getStrArr: IGetStringArr = target => new Arrar(100).fill(target)
+getStrArr(132) //报错，因为传入的并不是一个字符串
+getStrArr("ph") //正常运行
+
+/* 泛型参数默认类型 */
+type IGetRepeatArr<T = number> = (target: T) => T[]
+const getRepeatArr: IGetRepeatArr = target => new Arrar(100).fill(target)
+getRepeatArr("ph") //报错，因为传入的并不是一个数字
+getRepeatArr(123) //正常运行
+```
