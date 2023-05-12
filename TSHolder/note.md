@@ -141,9 +141,20 @@ interface IMult {
 }
 const myMult: IMult = (x, y) => x * y
 ```
+### 函数重载
+重载是方法名字相同，而参数不同，返回类型可以相同也可以不同。
 
+每个重载的方法（或者构造函数）都必须有一个独一无二的参数类型列表。
+```ts
+// 参数类型不同：
+function disp(string):void; 
+function disp(number):void;
+
+// 参数数量不同：
+function disp(n1:number):void; 
+function disp(x:number,y:number):void;
+```
     
-
 ## 1. 类型推断和定义类型
 ### 类型推断
 TypeScript可以识别js语言，在许多情况下可以推断类型，例如在创建变量的时候，将其赋值给特定值的时候，ts就会使用该值作为其类型值
