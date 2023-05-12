@@ -192,3 +192,33 @@ function swap<T, U>(dataArr: [T, U]): [U, T] {
 
 swap([1, "second"]) //return ["second", 1]
 ```
+
+### 2. 接口声明
+```ts
+interface IReturnParams<T> {
+    (param: T): T
+}
+
+//使用
+const returnParamsL: IReturnParams<number> = param => param
+```
+
+### 3. 类声明
+使用泛型声明类的时候，既可以用于类本身，也可以作用与类的成员函数
+
+```ts
+class Stack<T> {
+    private arr: T[] = []
+
+    public push(item: T) {
+        this.arr.push(item)
+    }
+
+    public pop() {
+        this.arr.pop()
+    }
+}
+
+//使用
+const stack = new Stack<number>()
+```
