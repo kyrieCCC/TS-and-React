@@ -113,6 +113,34 @@ function add(x: number, y: number): number {
 
 //我们可以看到我们为参数添加了number的限制，以及定义了返回值必须是一个number类型的数值
 ```
+我们可以有很多种方法来定义一个函数类型，例如匿名函数，箭头函数等等
+```ts
+//匿名函数 - js
+const add = function(x, y) {
+    return x + y
+}
+
+//匿名函数 - ts
+const add_ts = function(x: number, y: number): number {
+    return x + y
+}
+
+
+//箭头函数 - js
+const mult = (x, y) => {
+    return x * y
+}
+
+//箭头函数 - ts
+const mult_ts: (x: number, y: number) => number = (x, y) => x * y
+
+
+//接口
+interface IMult {
+    (x: number, y: number): number
+}
+const myMult: IMult = (x, y) => x * y
+```
 
     
 
