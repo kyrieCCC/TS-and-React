@@ -237,3 +237,28 @@ const getRepeatArr: IGetRepeatArr = target => new Arrar(100).fill(target)
 getRepeatArr("ph") //报错，因为传入的并不是一个数字
 getRepeatArr(123) //正常运行
 ```
+
+## 类型别名
+类型别名会给一个类型起一个新名字，类型别名有时候跟接口很像，但是可以作用于原始值、联合类型、元组以及其他任何你需要手写的类型
+```ts
+type myType = boolean | string
+
+const a: myType = true //正确
+const b: myType = 123 //报错，因为这里不属于指定类型中的一个
+const c: myType = "wlcph" //正确
+```
+当然类型别名也可以是泛型
+```ts
+type Container<T> = {value: T}
+
+
+//在二叉树中的使用
+type Tree<T> = {
+    value: T;
+    left: Tree<T>;
+    right: Tree<T>
+}
+```
+从这可以看出，类型别名和接口使用非常相似，都可以描述一个对象或者函数
+
+两者的区别在于，**interface只能用于定义对象类型**，而type的声明方式除了对象之外**还可以定义交叉、联合、原始类型**等等，类型声明的方式适用范围更加广泛
