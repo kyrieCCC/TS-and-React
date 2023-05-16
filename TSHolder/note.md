@@ -277,4 +277,28 @@ const len = (str as string).length
 
 //还可以将我们的父类断言为子类等等使用方法
 ```
- 
+## 高级类型
+### 交叉类型（Intersection Types）
+交叉类型是将**多个类型合并为一个类型**，这让我们可以把现有的多种类型叠加到一起成为一种类型，它可以包含了所需的所有类型的特性
+
+> 例如，我们现在有三个类型：Person、Moment和Sport，我们可以使用交叉类型，即**Person&Moment&Sport**。就是说这个类型的对象同时拥有了这三种类型的成员
+
+我们大多是在混入（mixins）或其他不适合典型面向对象模型的地方看到交叉类型的使用。
+
+### 联合类型（Union Types）
+联合类型与交叉类型很有关联，但是使用上却完全不同，偶尔会有这样的情况，一个代码库希望传入number或者是string类型的参数
+
+> 举一个简单的例子，现在有一个函数，并且函数接收一个参数params1，这个参数可以是number或者是string类型，但是在不使用联合类型的情况下，我们只能指定为any类型
+
+```ts
+function test(params1: any) {
+    if(typeof params1 == 'string') {
+        return 'this is string'
+    }
+    if(typeof params1 == 'number') {
+        return 'this is number'
+    }
+    throw new Error("invaild value")
+}
+```
+此时我们传入正常的number还有string就会正常运行
