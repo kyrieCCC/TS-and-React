@@ -15,4 +15,11 @@ function getValue_plus(person, keys) {
     return keys.map(function (item) { return person[item]; });
 }
 console.log(getValue_plus(person, ['name', 'age']));
-//console.log(getValue_plus(person, ['nothing'])); //报错，无法正常执行
+var personPar = {
+    name: 'wlc',
+    age: 18 //写string类型报错
+};
+var readonlyPer = {
+    name: 'penghui',
+    age: 18
+};
