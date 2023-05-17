@@ -392,3 +392,10 @@ function test(params1: any) {
 }
 ```
 但是typeof能识别的类型只有：**number、string、boolean和symbol类型**，ts并不会阻止与其他类型比较，但是并**不会识别为类型保护**
+
+#### instanceof 类型保护
+在熟悉js的基础语法之后，并不难了解instanceof进行类型判断的原理，其实**instanceof类型保护就是通过构造函数来细化类型的一种方式**
+
+instanceof的右侧要求是一个构造函数，ts将其细化为：
+1. **此构造函数的prototype属性的类型**，如果它的类型不为any的话
+2. 构造签名所返回的类型的联合
