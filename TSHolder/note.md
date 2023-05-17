@@ -377,3 +377,18 @@ function getAttr(params: Person1 | Person2) {
     }
 }
 ```
+
+#### typeof 类型保护
+我们上面定义的类型保护的函数，实质上有一点使用typeof类型判断的影子，其实我们并不需要将typeof抽象为一个类型保护函数来进行定义，这样会增加不少的代码量，我们的ts会**自动识别这样的类型保护**，也就是说我们可以在代码里面检查类型
+```ts
+function test(params1: any) {
+    if(typeof params1 == 'string') {
+        return 'this is string'
+    }
+    if(typeof params1 == 'number') {
+        return 'this is number'
+    }
+    throw new Error("invaild value")
+}
+```
+但是typeof能识别的类型只有：**number、string、boolean和symbol类型**，ts并不会阻止与其他类型比较，但是并**不会识别为类型保护**
