@@ -312,3 +312,45 @@ function test(params1: string | number) {
 这个时候我们的ts就会正常的检查是否为预先定义好的两个类型中的一种
 
 **在联合类型当中，使用 | 来表示联合，类似于中文中“或”的意思，我们可以定义多个类型，并使用联合类型串联起来，这个时候就可以是联合类型中的其中一个**
+
+### 类型保护
+首先在我们介绍联合类型的时候，会出现一个问题，就是当我们想要访问不同类型中的某一个不同的属性时，我们无法确定这个时候传入的是哪一种，例如
+```ts
+interface IPerson1 {
+    name: 'qwe'
+    hobby: string
+}
+interface IPerson2 {
+    name: 'wlc'
+    age: number
+}
+const Person1: IPerson1 = {
+    name: 'qwe',
+    hobby: 'basketball'
+}
+const Person2: IPerson2 = {
+    name: 'wlc',
+    age: 18
+}
+//定义了两个不同的interface
+function getAttr(params: Person1 | Person2) {
+    if(params.hobby) {
+        return 'this is person1'
+    } 
+    else if (params.age) {
+        return 'this is person2'
+    }
+}
+```
+因为此时我们的函数访问的并不是两个类型中的公共属性，于是ts这个时候就会给我们报错，我们无法正常运行上面的代码，那我们这个时候可以通过引入**类型断言**的方式来解决
+```ts
+function getAttr(params: Person1 | Person2) {
+    //引入类型断言
+    if((params as Person1).hobby) {
+        return 'this is person1'
+    } 
+    else {
+        return 'this is person2'
+    }
+}
+```
