@@ -354,3 +354,26 @@ function getAttr(params: Person1 | Person2) {
     }
 }
 ```
+
+那么这么做终会有一些麻烦，因为我们需要不断的使用类型断言，但是类型断言并不适合大规模的使用，所以ts当中的类型保护机制为上述问题提供了解决方案
+
+> 类型保护就是一些表达式，它们会在**运行时检查**以确保在某个作用域里的类型。 要定义一个类型保护，我们只要简单地定义一个函数，它的返回值是一个**类型谓词**：
+
+```ts
+function isPerson1(person: Person1 | Person2): person is Person1 {
+    return (<Person1>person).hobby !== undefinded
+}
+```
+上面的类型保护函数当中，**person is Person1** 就是这里的类型谓词，谓词为**paramsName is Type**这样的形式，且必须为传入的参数中的一个
+```ts
+//引入类型保护函数后，函数的内容就非常清晰了
+function getAttr(params: Person1 | Person2) {
+    //引入类型保护
+    if(isPerson1(params)) {
+        return 'this is person1'
+    } 
+    else {
+        return 'this is person2'
+    }
+}
+```
