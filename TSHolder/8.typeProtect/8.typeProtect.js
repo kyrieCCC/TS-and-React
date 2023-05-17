@@ -27,3 +27,20 @@ function getAttri(person) {
     }
 }
 console.log(getAttri(person1));
+console.log(getAttri(person2));
+//类型保护函数
+function isPerson1(person) {
+    return person.hobby !== undefined;
+}
+//引入类型保护函数
+function getAttri_protect(person) {
+    //引入类型保护
+    if (isPerson1(person)) {
+        return 'this is person1';
+    }
+    else {
+        return 'this is person2';
+    }
+}
+console.log(getAttri_protect(person1));
+console.log(getAttri_protect(person2));
