@@ -399,3 +399,28 @@ function test(params1: any) {
 instanceof的右侧要求是一个构造函数，ts将其细化为：
 1. **此构造函数的prototype属性的类型**，如果它的类型不为any的话
 2. 构造签名所返回的类型的联合
+
+### 索引类型
+索引类型是ts中的高级语法之一，首先先开始介绍一个例子
+
+当我们需要在一个对象中获取某一些属性的值，然后建立对应的集合
+```ts
+let person = {
+    name: 'wlc',
+    age: 20
+}
+
+function getValue(person: any, keys: string[]) {
+    return keys.map((item) => person[item])
+}
+
+console.log(getValue(person, ['name', 'age']))//['wlc', 20]
+console.log(getValue(person, ['music']))//[undefined]
+```
+在上面的例子当中，可以看到getValue函数打印出来的结果出现了undefined，但是ts的编译器并没有报错，于是我们需要针对这种模式进行类型约束，这里我们就需要用到 **索引类型查询** 和 **索引访问** 操作符：
+```ts
+function getValue_plus<T, K extends keyof T>(person: T, keys: K[]): T[k][] {
+    return keys.map((item) => person[item])
+}
+```
+这个时候再尝试传入一个person当中不存在的属性的时候，ts就会给我们报错，不允许程序的正常执行
