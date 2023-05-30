@@ -48,3 +48,26 @@ JSX 最终会被转化为 JavaScript，而 JSX 中的属性也会变成 JavaScri
     />
 </div>
 ```
+
+### 通过大括号使用JavaScript
+上文我们说到，JSX中允许我们编写HTML标签，但是往往我们一个组件当中会涉及到各种各样的逻辑操作，例如一些数值的动态计算等等，这时候需要我们使用js来定义一些变量，那么在JSX文件当中，我们就可以通过大括号的形式来引入js语言
+
+例如我们现在需要编写一个小组件，输出的内容为自定义的动态内容
+
+```jsx
+const littleComp = () => {
+    const time = getTime()
+
+    return (
+        <div>
+            <span>
+                <!-- 动态获取时间 -->
+                现在的时间是: {time}
+            </span>
+        </div>
+    )
+
+}
+
+export default littleComp;
+```
