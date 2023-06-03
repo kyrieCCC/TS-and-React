@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import JsxTest from './test/JsxTest';
+import Bgrd from './test/Bgrd'
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
           Edit <code>src/App.js</code> and save to reload.
         </p>
         <JsxTest>13213</JsxTest>
+        <Bgrd bdrdsize='5px' color="black" />
         <a
           className="App-link"
           href="https://reactjs.org"
