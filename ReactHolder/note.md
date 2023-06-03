@@ -205,3 +205,19 @@ export default function Profile() {
 }
 ```
 > 可以将带有`children`prop的组件看作带有一个‘洞’，可以由其父组件使用任意JSX来“填充”
+
+### Props随时间变化
+一个组件可能会**随着时间的推移接收到不同的props**，这说明props并不是静态的，prop甚至可能每秒都在变化
+
+然而，props是不可变的，当一个组件需要改变它的props时，它不得不“请求”它的父组件**来传递不同的props**——这是一个新的对象，而旧的props会被丢弃
+
+**不要尝试“更改props”**，当真正需要响应用户的输入的时候，最好是设置**state状态**
+
+### 小总结
++ 要传递 props，请将它们添加到 JSX，就像使用 HTML 属性一样。
++ 要读取 props，请使用 function Avatar({ person, size }) 解构语法。
++ 你可以指定一个默认值，如 size = 100，用于缺少值或值为 undefined 的 props 。
++ 你可以使用 <Avatar {...props} /> JSX 展开语法转发所有 props，但不要过度使用它！
++ 像 <Card><Avatar /></Card> 这样的嵌套 JSX，将被视为 Card 组件的 children prop。
++ Props 是只读的时间快照：每次渲染都会收到新版本的 props。
++ 你不能改变 props。当你需要交互性时，你可以设置 state。
