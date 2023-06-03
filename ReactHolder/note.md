@@ -71,3 +71,36 @@ const littleComp = () => {
 
 export default littleComp;
 ```
+在哪里可以使用大括号？
+
+1. 用作JSX标签内的**文本**：`<div>my name is {name}</div>`
+2. 用作跟紧在 **=**后的**属性**: `src={avatar}`会读取avatar变量，但是src="{avatar}"则只会表示这个是一个字符串
+
+### 双大括号，JSX中的CSS和对象
+除了字符串、数字和其他JavaScript表达式，你甚至可以在JSX当中传递对象，但是这个时候就会出现一个新的问题，就是我们上文提到大括号是用来表达JSX中的某些变量类型，如果直接使用大括号来表示这个时候的对象，就会发生歧义现象
+
+于是，**我们引入JSX当中的双大括号机制，我们可以在对象外再添加一个大括号，即双大括号**
+
+例如我们尝试在JSX当中编写内联样式
+```JSX
+export default function TodoList() {
+  return (
+    <ul style={{
+      backgroundColor: 'black',
+      color: 'pink'
+    }}>
+      <li>Improve the videophone</li>
+      <li>Prepare aeronautics lectures</li>
+      <li>Work on the alcohol-fuelled engine</li>
+    </ul>
+  );
+}
+```
+> 这里需要注意的一个点是：我们在编写内联style属性的时候，需要用小驼峰的形式编写，例如background-color需要更改为backgroundColor
+
+现在你几乎了解了有关 JSX 的一切：
+
++ JSX 引号内的值会作为字符串传递给属性。
++ 大括号让你可以将 JavaScript 的逻辑和变量带入到标签中。
++ 它们会在 JSX 标签中的内容区域或紧随属性的 = 后起作用。
++ {{ 和 }} 并不是什么特殊的语法：它只是包在 JSX 大括号内的 JavaScript 对象。
