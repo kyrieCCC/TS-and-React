@@ -104,3 +104,41 @@ export default function TodoList() {
 + 大括号让你可以将 JavaScript 的逻辑和变量带入到标签中。
 + 它们会在 JSX 标签中的内容区域或紧随属性的 = 后起作用。
 + {{ 和 }} 并不是什么特殊的语法：它只是包在 JSX 大括号内的 JavaScript 对象。
+
+
+## Props组件间传递数据
+### 简介
+在我们学习Vue的时候，Props是父组件向子组件传递数据的一个重要的方法，与Vue一样，React同样也是**单向数据流**，这意味着我们组件间的通信一般来说只能由父级传向子级，既然如此Props就显得非常之重要了
+
+Props是我们传递给JSX标签的信息，例如一些className、src或者其他的一些属性，我们可以通过它们传递任何JavaScript值，包括对象、数组和函数等等
+
+### 使用Props
+首先我们定义一个父组件，这个父组件会将一些css属性相关的内容传递给子组件
+```jsx
+export default function myInfo() {
+    return (
+        <Avatar 
+            person={{name: 'zhang san', imgUrl: '1234567.jpg'}}
+            size={43}
+        />
+    )
+}
+```
+随后我们再定义一个子组件，这个子组件此时可以接收到父组件传来的值，并加以设置为自己的属性
+```jsx
+function Avatar({person, size}) {
+    return (
+        <img 
+            src={person.imgUrl}
+            alt={person.name}
+            width={size}
+            height={size}
+        />
+    )
+}
+
+export default Avatar
+```
+这样我们通过参数项接收到父级传来的数据并设置为自己的css属性
+
+> 这里需要注意的是，我们在函数的参数项通过解构的方式拿到出传来的属性，如果不使用解构的方式，也可以使用props拿到总的数据，在props中提取需要的内容即可
