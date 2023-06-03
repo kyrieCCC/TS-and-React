@@ -173,3 +173,35 @@ function Profile(props) {
 }
 ```
 这样就会将`Profile`的所有props转发到对应的子组件当中。尽管如此，我们还是不建议使用展开的语法去写~
+
+### 将JSX作为子组件传递
+在实际的业务开发中，我们会常常考虑将不同的组件进行嵌套，这个时候我们可以引入名为`children`的prop，我们可以通过这个prop来包裹一个子组件
+
+下面来看一个完整的children的使用示例
+```jsx
+import Avatar from './Avatar'
+
+function Card({children}) {
+    return (
+        <div>
+            {children}
+        </div>
+    )
+}
+
+export default function Profile() {
+    return (
+        <Card>
+            <!-- 这里放的就是children组件 -->
+            <Avatar
+                size={100}
+                person={{
+                    name: 'wlc',
+                    imgUrl: '2345678.jpg'
+                }}
+            />
+        </Card>
+    )
+}
+```
+> 可以将带有`children`prop的组件看作带有一个‘洞’，可以由其父组件使用任意JSX来“填充”
