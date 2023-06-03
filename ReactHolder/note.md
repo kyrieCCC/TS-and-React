@@ -142,3 +142,34 @@ export default Avatar
 这样我们通过参数项接收到父级传来的数据并设置为自己的css属性
 
 > 这里需要注意的是，我们在函数的参数项通过解构的方式拿到出传来的属性，如果不使用解构的方式，也可以使用props拿到总的数据，在props中提取需要的内容即可
+
+### 为prop指定一个默认值
+如果你想在没有指定值的情况下给prop一个默认值，我们可以直接在参数的后面加上一个`=`和`默认值`来进行解构
+
+以上面的例子为例，我们为size添加100的默认值：
+```jsx
+function Avatar({size = 100}) {
+    return (
+        <img 
+            width={size}
+            height={size}
+        />
+    )
+}
+
+export default Avatar
+```
+> 默认值仅仅在缺少size的prop或者是size={undefined}的时候生效，但是**如果传递了null或者是0，此时将会生效**
+
+### 使用JSX展开语法传递props
+有些时候，我们需要通过props传递的数据会非常非常多，并且很重复，此时我们依然可以使用解构的语法，但是有些时候大家会更加重视简洁性，于是我们可以使用“展开”的语法
+```jsx
+function Profile(props) {
+    return (
+        <div className="card">
+            <Avatar {...props} />
+        </div>
+    )
+}
+```
+这样就会将`Profile`的所有props转发到对应的子组件当中。尽管如此，我们还是不建议使用展开的语法去写~
